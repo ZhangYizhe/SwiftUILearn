@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HikeView: View {
     var hike: Hike
-    @State private var showDetail = false
+    @State private var showDetail = true
     
     var transition: AnyTransition {
         let insertion = AnyTransition.move(edge: .trailing)
