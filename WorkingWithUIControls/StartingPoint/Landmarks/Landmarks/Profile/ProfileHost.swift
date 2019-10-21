@@ -32,6 +32,12 @@ struct ProfileHost: View {
                 ProfileSummary(profile: draftProfile)
             } else {
                 ProfileEditor(profile: $draftProfile)
+                .onAppear {
+                        self.draftProfile = self.userData.profile
+                }
+                .onDisappear {
+                    self.userData.profile = self.draftProfile
+                }
             }
         }
         .padding()

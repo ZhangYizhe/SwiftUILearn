@@ -11,6 +11,13 @@ import SwiftUI
 struct ProfileEditor: View {
     @Binding var profile: Profile
     
+    
+    var dateRange: ClosedRange<Date> {
+        let min = Calendar.current.date(byAdding: .year, value: -1, to: profile.goalDate)!
+        let max = Calendar.current.date(byAdding: .year, value: 1, to: profile.goalDate)!
+        return min...max
+    }
+    
     var body: some View {
         List {
             HStack {
@@ -34,6 +41,17 @@ struct ProfileEditor: View {
                 }
             .pickerStyle(SegmentedPickerStyle())
             }
+            .padding(.top)
+            
+            VStack(alignment: .leading, spacing: 20) {
+                Text("Goal Date").bold()
+                DatePicker(
+                    "",
+                    selection: $profile.goalDate,
+                    in: dateRange,
+                    displayedComponents: .date)
+            }
+            
         }
     }
 }
