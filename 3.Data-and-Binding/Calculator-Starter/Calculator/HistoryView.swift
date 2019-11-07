@@ -9,36 +9,46 @@
 import SwiftUI
 
 struct HistoryView: View {
+    @Binding var editingHistory : Bool
+    
     @ObservedObject var model: CalculatorModel
     
     var body: some View {
-        VStack {
-            if model.totalCount == 0 {
-                Text("没有履历")
-            } else {
-                HStack {
-                    Text("显示").font(.headline)
-                    Text("\(model.brain.output)")
+        NavigationView {
+            VStack {
+                if model.totalCount == 0 {
+                    Text("没有履历")
+                } else {
+                    HStack {
+                        Text("显示").font(.headline)
+                        Text("\(model.brain.output)")
+                    }
+                    
+                    Text(model.historyDetail)
+                    
+                    Slider(
+                        value: $model.slidingIndex,
+                        in: 0...Float(model.totalCount),
+                        step: Float(1)
+                    )
                 }
-                
-                HStack(spacing: CGFloat(0)) {
-                    ForEach(model.history, id: \.self) { item in
-                        Text("\(item.title)")
-                    }.padding(.zero)
-                }
-                
-                Slider(
-                    value: $model.slidingIndex,
-                    in: 0...Float(model.totalCount),
-                    step: Float(1)
-                )
-            }
-        }.padding()
+            }.padding()
+            
+            .navigationBarItems(
+                leading: Button(action: {
+                    self.editingHistory = false
+                }, label: {
+                    Text("关闭")
+                })
+            )
+        }
     }
 }
 
 struct HistoryView_Previews: PreviewProvider {
+    @State static var editingHistory = true
+    
     static var previews: some View {
-        HistoryView(model: CalculatorModel())
+        HistoryView(editingHistory: $editingHistory, model: CalculatorModel())
     }
 }

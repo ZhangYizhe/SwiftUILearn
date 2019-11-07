@@ -12,6 +12,7 @@ enum CalculatorBrain {
     case left(String)
     case leftOp(left: String, op: CalculatorButtonItem.Op)
     case leftOpRight(left: String, op: CalculatorButtonItem.Op, right: String)
+    case equal(String)
     case error
 
     @discardableResult
@@ -34,6 +35,7 @@ enum CalculatorBrain {
         case .left(let left): result = left
         case .leftOp(let left, _): result = left
         case .leftOpRight(_, _, let right): result = right
+        case .equal(let equal): result = equal
         case .error: return "Error"
         }
         guard let value = Double(result) else {
@@ -50,7 +52,7 @@ enum CalculatorBrain {
             return .leftOpRight(left: left, op: op, right: "0".apply(num: num))
         case .leftOpRight(let left, let op, let right):
             return .leftOpRight(left: left, op: op, right: right.apply(num: num))
-        case .error:
+        case .equal, .error:
             return .left("0".apply(num: num))
         }
     }
@@ -63,7 +65,7 @@ enum CalculatorBrain {
             return .leftOpRight(left: left, op: op, right: "0".applyDot())
         case .leftOpRight(let left, let op, let right):
             return .leftOpRight(left: left, op: op, right: right.applyDot())
-        case .error:
+        case .equal, .error:
             return .left("0".applyDot())
         }
     }
@@ -98,12 +100,12 @@ enum CalculatorBrain {
                 }
             case .equal:
                 if let result = currentOp.calculate(l: left, r: right) {
-                    return .left(result)
+                    return .equal(result)
                 } else {
                     return .error
                 }
             }
-        case .error:
+        case .equal, .error:
             return self
         }
     }
@@ -120,7 +122,7 @@ enum CalculatorBrain {
                 return .leftOpRight(left: left, op: op, right: "-0")
             case .leftOpRight(left: let left, let op, let right):
                 return .leftOpRight(left: left, op: op, right: right.flipped())
-            case .error:
+            case .equal, .error:
                 return .left("-0")
             }
         case .percent:
@@ -131,7 +133,7 @@ enum CalculatorBrain {
                 return self
             case .leftOpRight(left: let left, let op, let right):
                 return .leftOpRight(left: left, op: op, right: right.percentaged())
-            case .error:
+            case .equal, .error:
                 return .left("-0")
             }
         }

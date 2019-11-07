@@ -23,7 +23,7 @@ class CalculatorModel: ObservableObject {
     }
     
     var historyDetail: String {
-        history.map{ $0.desc }.joined()
+        history.map{ $0.title }.joined()
     }
     
     var temporaryKept: [CalculatorButtonItem] = []

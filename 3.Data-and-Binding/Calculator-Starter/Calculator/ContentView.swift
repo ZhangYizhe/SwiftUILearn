@@ -16,6 +16,8 @@ struct ContentView : View {
     @EnvironmentObject var model: CalculatorModel
     
     @State private var editingHistory = false
+    
+    @State private var alertView = false
 
     var body: some View {
         VStack(spacing: 12) {
@@ -23,7 +25,7 @@ struct ContentView : View {
             Button("操作履历:\(model.history.count)") {
                 self.editingHistory = true
             }.sheet(isPresented: self.$editingHistory) {
-                HistoryView(model: self.model)
+                HistoryView(editingHistory: self.$editingHistory, model: self.model)
             }
             Text(model.brain.output)
                 .font(.system(size: 76))
@@ -33,6 +35,18 @@ struct ContentView : View {
                     minWidth: 0,
                     maxWidth: .infinity,
                     alignment: .trailing)
+                .onTapGesture {
+                    self.alertView.toggle()
+            }.alert(isPresented: $alertView) {
+                Alert(
+                    title: Text(model.historyDetail),
+                    message: Text(model.brain.output),
+                    primaryButton: .default(Text("OK")),
+                    secondaryButton: .default(Text("Copy"), action: {
+                        UIPasteboard.general.string = self.model.brain.output
+                    })
+                )
+            }
             CalculatorButtonPad()
                 .padding(.bottom)
         }
