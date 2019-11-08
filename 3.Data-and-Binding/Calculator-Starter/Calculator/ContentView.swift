@@ -27,6 +27,9 @@ struct ContentView : View {
             }.sheet(isPresented: self.$editingHistory) {
                 HistoryView(editingHistory: self.$editingHistory, model: self.model)
             }
+            
+            HistoryView(editingHistory: self.$editingHistory, model: self.model)
+            
             Text(model.brain.output)
                 .font(.system(size: 76))
                 .minimumScaleFactor(0.5)

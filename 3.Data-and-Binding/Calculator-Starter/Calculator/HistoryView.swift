@@ -14,7 +14,7 @@ struct HistoryView: View {
     @ObservedObject var model: CalculatorModel
     
     var body: some View {
-        NavigationView {
+//        NavigationView {
             VStack {
                 if model.totalCount == 0 {
                     Text("没有履历")
@@ -34,14 +34,14 @@ struct HistoryView: View {
                 }
             }.padding()
             
-            .navigationBarItems(
-                leading: Button(action: {
-                    self.editingHistory = false
-                }, label: {
-                    Text("关闭")
-                })
-            )
-        }
+//            .navigationBarItems(
+//                leading: Button(action: {
+//                    self.editingHistory = false
+//                }, label: {
+//                    Text("关闭")
+//                })
+//            )
+//        }
     }
 }
 
