@@ -22,26 +22,23 @@ struct PokemonInfoPanel: View {
     }
     
     var body: some View {
-        VStack {
-            Spacer()
+        VStack(spacing: 20) {
+            topIndicator
+                .padding()
             
-            VStack(spacing: 20) {
-                topIndicator
-                
-                Header(model: model)
-                
-                pokemonDescription
+            Header(model: model)
+            
+            pokemonDescription
                 .padding(.horizontal)
-                
-                
-                PokemonInfoPanelAbilityList(model: model, abilityModels: AbilityViewModel.sample(pokemonID: model.id))
-                    .padding(.horizontal)
-            }
-            .padding(.vertical)
-            .background(Color.white)
+            
+            PokemonInfoPanelAbilityList(model: model, abilityModels: AbilityViewModel.sample(pokemonID: model.id))
+                .padding(.horizontal)
+            
+            Spacer()
         }
-        
-        
+        .blurBackground(style: .systemMaterial)
+        .cornerRadius(20)
+        .fixedSize(horizontal: false, vertical: true)
     }
 }
 
@@ -66,7 +63,7 @@ extension PokemonInfoPanel {
         
         var pokemonIcon: some View {
             Image("Pokemon-\(model.id)")
-            .resizable()
+                .resizable()
                 .frame(width: 68, height: 68)
         }
         

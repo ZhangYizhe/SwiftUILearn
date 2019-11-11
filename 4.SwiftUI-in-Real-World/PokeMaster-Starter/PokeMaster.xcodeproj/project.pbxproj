@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6248589423790C39002CBF5B /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6248589323790C39002CBF5B /* BlurView.swift */; };
 		624FD582237549C50083BEFE /* PokemonInfoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624FD581237549C50083BEFE /* PokemonInfoRow.swift */; };
 		62EAB34D237554C500F59997 /* PokemonList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EAB34C237554C500F59997 /* PokemonList.swift */; };
 		62EAB34F23756C3700F59997 /* PokemonInfoPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EAB34E23756C3700F59997 /* PokemonInfoPanel.swift */; };
@@ -92,6 +93,7 @@
 
 /* Begin PBXFileReference section */
 		4B9EAF6823162D9900B72082 /* PokeMaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokeMaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6248589323790C39002CBF5B /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		624FD581237549C50083BEFE /* PokemonInfoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonInfoRow.swift; sourceTree = "<group>"; };
 		62EAB34C237554C500F59997 /* PokemonList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonList.swift; sourceTree = "<group>"; };
 		62EAB34E23756C3700F59997 /* PokemonInfoPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonInfoPanel.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				624FD581237549C50083BEFE /* PokemonInfoRow.swift */,
 				62EAB34E23756C3700F59997 /* PokemonInfoPanel.swift */,
 				62EAB35123757B3200F59997 /* PokemonInfoPanelAbilityList.swift */,
+				6248589323790C39002CBF5B /* BlurView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -526,6 +529,7 @@
 				D1320B2023178614006F02A6 /* ContentView.swift in Sources */,
 				D1320B1A23178614006F02A6 /* PokemonViewModel.swift in Sources */,
 				62EAB34F23756C3700F59997 /* PokemonInfoPanel.swift in Sources */,
+				6248589423790C39002CBF5B /* BlurView.swift in Sources */,
 				62EAB34D237554C500F59997 /* PokemonList.swift in Sources */,
 				D1320AD823178614006F02A6 /* Helpers.swift in Sources */,
 				D1320B2223178614006F02A6 /* SceneDelegate.swift in Sources */,
