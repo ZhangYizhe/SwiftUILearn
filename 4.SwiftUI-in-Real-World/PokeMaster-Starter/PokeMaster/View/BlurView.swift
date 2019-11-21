@@ -12,40 +12,23 @@ import UIKit
 struct BlurView: UIViewRepresentable {
     let style: UIBlurEffect.Style
     
-    let blurEffect : UIBlurEffect
-    
-    let blurView : UIVisualEffectView
-    
     init(style: UIBlurEffect.Style) {
-        print("Init")
+//        print("Init")
         self.style = style
-        self.blurEffect = UIBlurEffect(style: style)
-        self.blurView = UIVisualEffectView(effect: blurEffect)
     }
     
-    func makeUIView(context: UIViewRepresentableContext<BlurView>) -> UIView {
-        print("makeUIView")
-        
-        let view = UIView(frame: .zero)
-        view.backgroundColor = .clear
-        
-        blurView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(blurView)
-        NSLayoutConstraint.activate([
-            blurView.heightAnchor.constraint(equalTo: view.heightAnchor),
-            blurView.widthAnchor.constraint(equalTo: view.widthAnchor),
-        ])
-        
+    func makeUIView(context: Context) -> UIBlurView {
+//        print("makeUIView")
+        let view = UIBlurView(style: style, frame: .zero)
         return view
     }
     
-    func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<BlurView>) {
-        
-        uiView.addSubview(blurView)
-        NSLayoutConstraint.activate([
-            blurView.heightAnchor.constraint(equalTo: uiView.heightAnchor),
-            blurView.widthAnchor.constraint(equalTo: uiView.widthAnchor),
-        ])
+    func updateUIView(_ uiView: UIBlurView, context: Context) {
+//        print("Update")
+        let blurEffect = UIBlurEffect(style: style)
+        UIView.animate(withDuration: 0.25) {
+            uiView.blurView?.effect = blurEffect
+        }
     }
 }
 
@@ -56,4 +39,36 @@ extension View {
             self
         }
     }
+}
+
+
+class UIBlurView: UIView {
+    
+    let style: UIBlurEffect.Style
+    var blurView : UIVisualEffectView?
+    
+    init(style: UIBlurEffect.Style, frame: CGRect) {
+        self.style = style
+        super.init(frame: frame)
+        
+        initView()
+    }
+        
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func initView() {
+        self.backgroundColor = .clear
+        
+        let blurEffect = UIBlurEffect(style: style)
+        blurView = UIVisualEffectView(effect: blurEffect)
+        blurView!.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(blurView!)
+        NSLayoutConstraint.activate([
+            blurView!.heightAnchor.constraint(equalTo: self.heightAnchor),
+            blurView!.widthAnchor.constraint(equalTo: self.widthAnchor),
+        ])
+    }
+    
 }
