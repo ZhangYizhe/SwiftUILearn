@@ -133,16 +133,16 @@ import Foundation
 //    .compactMap { $0.args?.foo }
 //}
 
-struct Response: Decodable {
-    struct Args: Decodable {
-        let foo: String
-    }
-    let args: Args?
-}
-
-enum HTTPError: LocalizedError {
-    case statusCode
-}
+//struct Response: Decodable {
+//    struct Args: Decodable {
+//        let foo: String
+//    }
+//    let args: Args?
+//}
+//
+//enum HTTPError: LocalizedError {
+//    case statusCode
+//}
 
 //check("URL Session") {
 //    URLSession.shared.dataTaskPublisher(for: URL(string: "https://httpbin.org/get?foo=bar")!)
@@ -166,20 +166,28 @@ enum HTTPError: LocalizedError {
 //    }
 //}
 
-let url = URL(string: "https://httpbin.org/get?foo=bar")!
+//let url = URL(string: "https://httpbin.org/get?foo=bar")!
+//
+//let cancellable = URLSession.shared.dataTaskPublisher(for: url)
+//    .map { $0.data }
+//    .decode(type: Response.self, decoder: JSONDecoder())
+//    .sink(receiveCompletion: { completion in
+//        switch completion {
+//        case .finished:
+//            break
+//        case .failure(let error):
+//            print("received error: ", error)
+//        }
+//    }, receiveValue: { response in
+//        print(response.args?.foo ?? "")
+//    })
 
-let cancellable = URLSession.shared.dataTaskPublisher(for: url)
-    .map { $0.data }
-    .decode(type: Response.self, decoder: JSONDecoder())
-    .sink(receiveCompletion: { completion in
-        switch completion {
-        case .finished:
-            break
-        case .failure(let error):
-            print("received error: ", error)
-        }
-    }, receiveValue: { response in
-        print(response.args?.foo ?? "")
-    })
+//let timer = Timer.publish(every: 1, on: .main, in: .default)
+//
+//let temp = check("Timer Connected") {
+//    timer
+//}
+//
+//timer.connect()
 
 

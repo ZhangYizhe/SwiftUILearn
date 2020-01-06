@@ -20,10 +20,6 @@ public enum SampleError: Error {
     case sampleError
 }
 
-public enum MyError: Error {
-    case myError
-}
-
 extension Sequence {
     public func scan<ResultElement>(
         _ initial: ResultElement,
