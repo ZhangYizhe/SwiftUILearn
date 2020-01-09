@@ -51,7 +51,7 @@ struct SettingView: View {
                 }
                 
                 if settings.loginRequesting {
-                    Text("登陆中...")
+                    ActivityIndicatorView()
                 } else {
                     Button(settings.accountBehavior.text) {
                         self.store.dispatch(.login(

@@ -12,6 +12,7 @@
 		6239275E23C6FE68006DC593 /* AppCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6239275D23C6FE68006DC593 /* AppCommand.swift */; };
 		6239276023C70132006DC593 /* SubscriptionToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6239275F23C70132006DC593 /* SubscriptionToken.swift */; };
 		6239276223C709B3006DC593 /* FileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6239276123C709B3006DC593 /* FileStorage.swift */; };
+		6239276423C710BD006DC593 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6239276323C710BD006DC593 /* ActivityIndicatorView.swift */; };
 		625745A923C34394002487C1 /* MainTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625745A823C34394002487C1 /* MainTab.swift */; };
 		62BC4F5723C5D55000E00DBF /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BC4F5623C5D55000E00DBF /* LoginRequest.swift */; };
 		62BC4F5923C5D59700E00DBF /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BC4F5823C5D59700E00DBF /* AppError.swift */; };
@@ -112,6 +113,7 @@
 		6239275D23C6FE68006DC593 /* AppCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCommand.swift; sourceTree = "<group>"; };
 		6239275F23C70132006DC593 /* SubscriptionToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionToken.swift; sourceTree = "<group>"; };
 		6239276123C709B3006DC593 /* FileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorage.swift; sourceTree = "<group>"; };
+		6239276323C710BD006DC593 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		625745A823C34394002487C1 /* MainTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTab.swift; sourceTree = "<group>"; };
 		62BC4F5623C5D55000E00DBF /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		62BC4F5823C5D59700E00DBF /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
@@ -444,6 +446,7 @@
 			isa = PBXGroup;
 			children = (
 				D1D7EEA8231BA96E00A52D3D /* BlurView.swift */,
+				6239276323C710BD006DC593 /* ActivityIndicatorView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -617,6 +620,7 @@
 				D1840BB7231A7C540055E3B9 /* PokemonInfoPanelAbilityList.swift in Sources */,
 				62E8775F23C570AD00DC2456 /* AppState.swift in Sources */,
 				D1320B1A23178614006F02A6 /* PokemonViewModel.swift in Sources */,
+				6239276423C710BD006DC593 /* ActivityIndicatorView.swift in Sources */,
 				D1572558231A03F100E75259 /* PokemonInfoPanel.swift in Sources */,
 				D1E568782318FF1D007F6608 /* PokemonList.swift in Sources */,
 				D1320AD823178614006F02A6 /* Helpers.swift in Sources */,
