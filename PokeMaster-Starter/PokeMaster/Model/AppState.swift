@@ -22,9 +22,13 @@ extension AppState {
             case register,login
         }
         
-        var showEnglishName = true
+        @UserDefaultsStorage(key: "showEnglishName")
+        var showEnglishName: Bool
+        
         var sorting = Sorting.id
-        var showFavoriteOnly = false
+        
+        @UserDefaultsStorage(key: "showFavoriteOnly")
+        var showFavoriteOnly: Bool
         
         var accountBehavior = AccountBehavior.login
         var email = ""
