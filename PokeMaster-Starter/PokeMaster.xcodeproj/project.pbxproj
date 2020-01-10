@@ -15,6 +15,7 @@
 		6239276423C710BD006DC593 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6239276323C710BD006DC593 /* ActivityIndicatorView.swift */; };
 		6239276623C715E8006DC593 /* UserDefaultsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6239276523C715E8006DC593 /* UserDefaultsStorage.swift */; };
 		625745A923C34394002487C1 /* MainTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625745A823C34394002487C1 /* MainTab.swift */; };
+		627DA6C223C82AB1000626DA /* EmailCheckingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627DA6C123C82AB1000626DA /* EmailCheckingRequest.swift */; };
 		62BC4F5723C5D55000E00DBF /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BC4F5623C5D55000E00DBF /* LoginRequest.swift */; };
 		62BC4F5923C5D59700E00DBF /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BC4F5823C5D59700E00DBF /* AppError.swift */; };
 		62E8775F23C570AD00DC2456 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E8775E23C570AD00DC2456 /* AppState.swift */; };
@@ -117,6 +118,7 @@
 		6239276323C710BD006DC593 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		6239276523C715E8006DC593 /* UserDefaultsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorage.swift; sourceTree = "<group>"; };
 		625745A823C34394002487C1 /* MainTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTab.swift; sourceTree = "<group>"; };
+		627DA6C123C82AB1000626DA /* EmailCheckingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCheckingRequest.swift; sourceTree = "<group>"; };
 		62BC4F5623C5D55000E00DBF /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		62BC4F5823C5D59700E00DBF /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		62E8775E23C570AD00DC2456 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -235,6 +237,15 @@
 				4B9EAF6823162D9900B72082 /* PokeMaster.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		627DA6C323C82AB4000626DA /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				62BC4F5623C5D55000E00DBF /* LoginRequest.swift */,
+				627DA6C123C82AB1000626DA /* EmailCheckingRequest.swift */,
+			);
+			path = Request;
 			sourceTree = "<group>";
 		};
 		D1320A7C23178614006F02A6 /* PokeMaster */ = {
@@ -373,11 +384,11 @@
 				6239275D23C6FE68006DC593 /* AppCommand.swift */,
 				62BC4F5823C5D59700E00DBF /* AppError.swift */,
 				62E8776423C57E9600DC2456 /* AppAction.swift */,
-				62BC4F5623C5D55000E00DBF /* LoginRequest.swift */,
 				62E8776223C57D5300DC2456 /* User.swift */,
 				6239275F23C70132006DC593 /* SubscriptionToken.swift */,
 				6239276123C709B3006DC593 /* FileStorage.swift */,
 				6239276523C715E8006DC593 /* UserDefaultsStorage.swift */,
+				627DA6C323C82AB4000626DA /* Request */,
 				D1320AC923178614006F02A6 /* ViewModel */,
 				D1320ACC23178614006F02A6 /* DataModel */,
 			);
@@ -596,6 +607,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				627DA6C223C82AB1000626DA /* EmailCheckingRequest.swift in Sources */,
 				62BC4F5723C5D55000E00DBF /* LoginRequest.swift in Sources */,
 				D1320B1F23178614006F02A6 /* AppDelegate.swift in Sources */,
 				4BC15F6C231CA81600A16DC0 /* SettingRootView.swift in Sources */,

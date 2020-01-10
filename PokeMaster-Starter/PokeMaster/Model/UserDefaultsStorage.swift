@@ -10,25 +10,21 @@ import Foundation
 import Combine
 
 @propertyWrapper
-struct UserDefaultsStorage<T:Codable> {
-    var value: T?
-    enum keyType {
-        case bool
-    }
+struct UserDefaultsStorage<Bool:Codable> {
+    var value: Bool
     
     let key: String
-    let type: keyType
     
-    init(key: String, type: keyType) {
-        if let currentValue = UserDefaults.standard.value(forKey: key) as? T {
+    init(key: String) {
+        if let currentValue = UserDefaults.standard.value(forKey: key) as? Bool {
             value = currentValue
         } else {
-            value = nil
+            value = false as! Bool
         }
         self.key = key
     }
     
-    var wrappedValue: T? {
+    var wrappedValue: Bool {
         set {
             value = newValue
             UserDefaults.standard.set(value, forKey: key)
