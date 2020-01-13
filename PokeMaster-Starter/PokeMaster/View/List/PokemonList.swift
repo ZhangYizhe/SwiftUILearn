@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct PokemonList: View {
+    
+    @EnvironmentObject var store: Store
 
     @State var expandingIndex: Int?
     @State var searchText: String = ""
@@ -18,7 +20,7 @@ struct PokemonList: View {
             TextField("搜索", text: $searchText)
                 .frame(height: 40)
                 .padding(.horizontal, 25)
-            ForEach(PokemonViewModel.all) { pokemon in
+            ForEach(store.appState.pokemonList.allPokemonsByID) { pokemon in
                 PokemonInfoRow(
                     model: pokemon,
                     expanded: self.expandingIndex == pokemon.id
@@ -45,6 +47,7 @@ struct PokemonList: View {
 
 struct PokemonList_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonList()
+        let store = Store()
+        return PokemonList().environmentObject(store)
     }
 }

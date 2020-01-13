@@ -31,7 +31,6 @@ struct LoginAppCommand: AppCommand {
             }) { user in
                 store.dispatch(.accountBehaviorDone(result: .success(user)))
         }.seal(in: token)
-        
     }
 }
 
@@ -40,5 +39,25 @@ struct WriteUserAppCommand: AppCommand {
     
     func execute(in store: Store) {
         try? FileHelper.writeJSON(user, to: .documentDirectory, fileName: "user.json")
+    }
+}
+
+struct LoadPokemonsCommand: AppCommand {
+    func execute(in store: Store) {
+        let token = SubscriptionToken()
+        LoadPokemonRequest.all
+            .sink(
+                receiveCompletion: { complete in
+                    if case .failure(let error) = complete {
+                        store.dispatch(
+                            .loadPokemonsDone(result: .failure(error))
+                        )
+                    }
+                    token.unseal()
+            }) { value in
+                store.dispatch(
+                    .loadPokemonsDone(result: .success(value))
+                )
+        }.seal(in: token)
     }
 }
