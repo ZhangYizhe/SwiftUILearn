@@ -41,6 +41,8 @@ extension AppState {
         
         var passwordValidStatus = PasswordValidStatus.empty
         
+        var canRegisterValid: Bool = false
+        
         class AccountChecker {
             @Published var accountBehavior = AccountBehavior.register
             @Published var email = ""
@@ -102,6 +104,12 @@ extension AppState {
                             }
                         }
                 }.eraseToAnyPublisher()
+            }
+            
+            var canRegisterValid: AnyPublisher<Bool, Never> {
+                Publishers.CombineLatest(isEmailValid, isPasswordValid)
+                    .map { $0 && $1 == .legitimate}
+                    .eraseToAnyPublisher()
             }
         }
         

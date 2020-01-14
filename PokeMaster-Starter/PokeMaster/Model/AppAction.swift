@@ -16,4 +16,5 @@ enum AppAction {
     case passwordValid(status: AppState.Settings.PasswordValidStatus)
     case loadPokemons
     case loadPokemonsDone(result: Result<[PokemonViewModel], AppError>)
+    case canRegisterValid(valid: Bool)
 }

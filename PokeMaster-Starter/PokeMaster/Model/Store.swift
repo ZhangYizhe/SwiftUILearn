@@ -22,9 +22,13 @@ class Store: ObservableObject {
         appState.settings.checker.isEmailValid.sink { isValid in
             self.dispatch(.emailValid(valid: isValid))
         }.store(in: &disposeBag)
-        
+
         appState.settings.checker.isPasswordValid.sink { status in
             self.dispatch(.passwordValid(status: status))
+        }.store(in: &disposeBag)
+        
+        appState.settings.checker.canRegisterValid.sink { isValid in
+            self.dispatch(.canRegisterValid(valid: isValid))
         }.store(in: &disposeBag)
     }
     
@@ -67,8 +71,6 @@ class Store: ObservableObject {
             }
         case .logout:
             appState.settings.loginUser = nil;
-        case .emailValid(let valid):
-            appState.settings.isEmailValid = valid
         case .passwordValid(let status):
             appState.settings.passwordValidStatus = status
         case .loadPokemons:
@@ -77,7 +79,6 @@ class Store: ObservableObject {
             }
             appState.pokemonList.loadingPokemons = true
             appCommand = LoadPokemonsCommand()
-            
         case .loadPokemonsDone(let result):
             switch result {
             case .success(let models):
@@ -85,6 +86,10 @@ class Store: ObservableObject {
             case .failure(let error):
                 print(error)
             }
+        case .emailValid(let valid):
+            appState.settings.isEmailValid = valid
+        case .canRegisterValid(let valid):
+            appState.settings.canRegisterValid = valid
         }
         
         return (appState, appCommand)

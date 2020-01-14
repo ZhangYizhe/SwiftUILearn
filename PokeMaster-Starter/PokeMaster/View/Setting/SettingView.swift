@@ -55,10 +55,12 @@ struct SettingView: View {
                     ActivityIndicatorView()
                 } else {
                     Button(settings.checker.accountBehavior.text) {
-                        self.store.dispatch(.login(
+                        if self.settings.checker.accountBehavior == .login {
+                            self.store.dispatch(.login(
                             email: self.settings.checker.email,
                             password: self.settings.checker.password))
-                    }
+                        }
+                    }.disabled(!settings.canRegisterValid)
                 }
                 
             } else {
