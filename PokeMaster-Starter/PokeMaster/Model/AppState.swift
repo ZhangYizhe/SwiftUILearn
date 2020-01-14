@@ -25,6 +25,10 @@ extension AppState {
             case register,login
         }
         
+        enum PasswordValidStatus: CaseIterable {
+            case empty,legitimate,illegal
+        }
+        
         @UserDefaultsStorage(key: "showEnglishName")
         var showEnglishName: Bool
         
@@ -35,8 +39,10 @@ extension AppState {
         
         var isEmailValid: Bool = false
         
+        var passwordValidStatus = PasswordValidStatus.empty
+        
         class AccountChecker {
-            @Published var accountBehavior = AccountBehavior.login
+            @Published var accountBehavior = AccountBehavior.register
             @Published var email = ""
             @Published var password = ""
             @Published var verifyPassword = ""
@@ -73,6 +79,29 @@ extension AppState {
                     .map {$0 && ($1 || $2)}
                     .eraseToAnyPublisher()
                 
+            }
+            
+            var isPasswordValid: AnyPublisher<PasswordValidStatus, Never> {
+                let password = $password
+                let verifyPassword = $verifyPassword
+                
+                return Publishers.CombineLatest(password, verifyPassword)
+                    .debounce(for: .milliseconds(200), scheduler: DispatchQueue.main)
+                    .flatMap { (password, verifyPassword) -> AnyPublisher<PasswordValidStatus, Never> in
+                        if password == "" {
+                            return Just(.empty).eraseToAnyPublisher()
+                        } else {
+                            if verifyPassword == "" {
+                                return Just(.empty).eraseToAnyPublisher()
+                            } else {
+                                if password == verifyPassword {
+                                    return Just(.legitimate).eraseToAnyPublisher()
+                                } else {
+                                    return Just(.illegal).eraseToAnyPublisher()
+                                }
+                            }
+                        }
+                }.eraseToAnyPublisher()
             }
         }
         

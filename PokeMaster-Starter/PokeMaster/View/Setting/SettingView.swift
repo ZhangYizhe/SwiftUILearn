@@ -30,7 +30,7 @@ struct SettingView: View {
     }
 
     var accountSection: some View {
-        Section(header: Text("账户")) {
+        Section(header: Text("账户"), footer: footerView) {
             if settings.loginUser == nil {
                 Picker(
                     selection: settingsBinding.checker.accountBehavior,
@@ -68,6 +68,13 @@ struct SettingView: View {
                 }
             }
         }
+    }
+    
+    var footerView: some View {
+        if settings.checker.accountBehavior == .register && settings.passwordValidStatus == AppState.Settings.PasswordValidStatus.illegal {
+            return Text("两次输入不一致")
+        }
+        return Text("")
     }
 
     var optionSection: some View {
